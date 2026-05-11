@@ -660,38 +660,31 @@
     .modulos-list {
       display: flex;
       flex-direction: column;
-      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .modulo-card {
-      position: relative;
+      position: sticky;
+      top: 120px;
       display: grid;
       grid-template-columns: 72px 1fr 2fr;
       align-items: center;
       gap: 40px;
       padding: 36px 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
+      background: var(--deepest);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
       transition: background 0.25s ease;
       cursor: default;
     }
     .modulo-card:hover { background: var(--dark); }
 
-    /* Letra decorativa fantasma */
-    .modulo-ghost {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-pirulen);
-      font-size: 140px;
-      color: rgba(255,255,255,0.04);
-      text-transform: uppercase;
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: 0;
-    }
+    /* Z-index crescente — cada card cobre o anterior */
+    .modulo-card:nth-child(1) { z-index: 1; }
+    .modulo-card:nth-child(2) { z-index: 2; }
+    .modulo-card:nth-child(3) { z-index: 3; }
+    .modulo-card:nth-child(4) { z-index: 4; }
+    .modulo-card:nth-child(5) { z-index: 5; }
 
     /* Letra inicial */
     .modulo-letra {
@@ -1213,6 +1206,8 @@
       .modulos-left { position: static; }
       .modulos-title { margin-bottom: 0; }
       .modulo-card {
+        position: static;
+        box-shadow: none;
         grid-template-columns: 48px 1fr;
         grid-template-rows: auto auto;
         gap: 12px 20px;
@@ -1224,7 +1219,6 @@
         padding-left: 68px;
         font-size: 14px;
       }
-      .modulo-ghost { font-size: 100px; }
       .modulo-letra { font-size: 22px; }
       .modulos-cta  { margin-top: 48px; }
 
@@ -1557,35 +1551,30 @@
         <div class="modulos-list">
 
           <div class="modulo-card">
-            <span class="modulo-ghost">R</span>
             <span class="modulo-letra">R</span>
             <span class="modulo-nome">Reduzir</span>
             <span class="modulo-desc">Remover interferências da decisão</span>
           </div>
 
           <div class="modulo-card">
-            <span class="modulo-ghost">E</span>
             <span class="modulo-letra">E</span>
             <span class="modulo-nome">Escolher</span>
             <span class="modulo-desc">Definir prioridade estratégica</span>
           </div>
 
           <div class="modulo-card">
-            <span class="modulo-ghost">S</span>
             <span class="modulo-letra">S</span>
             <span class="modulo-nome">Selecionar</span>
             <span class="modulo-desc">Direcionar atenção</span>
           </div>
 
           <div class="modulo-card">
-            <span class="modulo-ghost">E</span>
             <span class="modulo-letra">E</span>
             <span class="modulo-nome">Estruturar</span>
             <span class="modulo-desc">Organizar execução</span>
           </div>
 
           <div class="modulo-card">
-            <span class="modulo-ghost">T</span>
             <span class="modulo-letra">T</span>
             <span class="modulo-nome">Transformar</span>
             <span class="modulo-desc">Consolidar consistência</span>
