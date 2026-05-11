@@ -950,6 +950,33 @@
       background: var(--light);
       animation: scrollDot 2s ease-in-out infinite;
     }
+    /* ─── SCROLL REVEAL ─────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger para listas */
+    .reveal-stagger { opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-stagger.visible { opacity: 1; transform: translateY(0); }
+
+    /* Reveal de linha (para divisores, quotes) */
+    .reveal-line {
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal-line.visible { opacity: 1; transform: scaleX(1); }
+
     /* ─── CURSOR CUSTOMIZADO ────────────────────────── */
     * { cursor: none !important; }
 
@@ -1298,8 +1325,8 @@
     <div class="problema-inner">
 
       <div class="problema-left">
-        <span class="section-label problema-label">O Diagnóstico</span>
-        <h2 class="problema-title">
+        <span class="section-label problema-label reveal">O Diagnóstico</span>
+        <h2 class="problema-title reveal">
           A forma como você decide está sendo influenciada
           pelo ambiente — não pela estratégia.
         </h2>
@@ -1617,6 +1644,58 @@
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 400);
     });
+
+    // ── Scroll Reveal + Stagger
+    const revealSelectors = [
+      // Títulos e labels de seção
+      '.section-label', '.problema-title', '.problema-text',
+      '.o-que-e-title', '.o-que-e-p1', '.o-que-e-p2', '.o-que-e-p3',
+      '.sistema-title', '.sistema-nota', '.modulos-title',
+      '.prova-box', '.prova-citacao',
+      '.ecossistema-label', '.cta-titulo', '.cta-sub', '.cta-label',
+      '.para-quem-col', '.para-quem-col-dark',
+    ];
+
+    const staggerSelectors = [
+      '.sintoma-item', '.pilar', '.flow-node',
+      '.modulo-card', '.eco-card', '.eco-card-dark',
+    ];
+
+    // Aplica classe reveal
+    revealSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (!el.classList.contains('fade-up')) el.classList.add('reveal');
+      });
+    });
+
+    // Aplica classe reveal-stagger com delay escalonado por grupo
+    document.querySelectorAll(staggerSelectors.join(',')).forEach((el, i) => {
+      el.classList.add('reveal-stagger');
+      // Calcula delay relativo aos irmãos
+      const siblings = Array.from(el.parentElement.children);
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = (idx * 0.1) + 's';
+    });
+
+    // IntersectionObserver dispara quando elemento entra na tela
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+    // ── Parallax no watermark do hero
+    const watermark = document.querySelector('.hero-watermark');
+    window.addEventListener('scroll', () => {
+      if (watermark) {
+        watermark.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+      }
+    }, { passive: true });
 
     // ── Cursor customizado
     const dot   = document.getElementById('cursor-dot');
