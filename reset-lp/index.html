@@ -344,18 +344,16 @@
 
     .sintoma-item {
       background: var(--white);
-      padding: 28px 24px;
+      padding: 32px 28px;
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .sintoma-mark {
-      width: 6px;
-      height: 6px;
-      background: var(--dark);
+    .sintoma-icon {
+      width: 36px;
+      height: 36px;
       flex-shrink: 0;
-      margin-top: 6px;
     }
 
     .sintoma-text {
@@ -363,7 +361,56 @@
       font-weight: 400;
       font-size: 14px;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    /* ── Animações dos ícones ── */
+    @keyframes si-scatter {
+      0%,100% { transform: scale(1);   opacity: 1; }
+      50%      { transform: scale(0.5); opacity: 0.3; }
+    }
+    @keyframes si-pulse {
+      0%,100% { transform: scaleY(1); }
+      50%      { transform: scaleY(1.4); }
+    }
+    @keyframes si-draw {
+      0%   { stroke-dashoffset: 80; }
+      60%  { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes si-drain {
+      0%   { stroke-dashoffset: 0; }
+      70%  { stroke-dashoffset: 66; }
+      100% { stroke-dashoffset: 66; }
+    }
+
+    /* Dispersão — 4 pontos se expandindo */
+    .si-dot { animation: si-scatter 2.4s ease-in-out infinite; }
+    .si-dot:nth-child(1) { animation-delay: 0s; }
+    .si-dot:nth-child(2) { animation-delay: 0.3s; }
+    .si-dot:nth-child(3) { animation-delay: 0.6s; }
+    .si-dot:nth-child(4) { animation-delay: 0.9s; }
+
+    /* Sobrecarga — barras pulsando */
+    .si-bar { transform-origin: left center; }
+    .si-bar:nth-child(1) { animation: si-pulse 2s ease-in-out infinite; animation-delay: 0s; }
+    .si-bar:nth-child(2) { animation: si-pulse 2s ease-in-out infinite; animation-delay: 0.2s; }
+    .si-bar:nth-child(3) { animation: si-pulse 2s ease-in-out infinite; animation-delay: 0.4s; }
+
+    /* Reativo — linha se desenhando */
+    .si-zigzag {
+      stroke-dasharray: 80;
+      stroke-dashoffset: 80;
+      animation: si-draw 2.5s ease-in-out infinite;
+    }
+
+    /* Desgaste — círculo drenando */
+    .si-circle-drain {
+      stroke-dasharray: 66;
+      stroke-dashoffset: 0;
+      animation: si-drain 3s ease-in-out infinite;
+      transform-origin: center;
+      transform: rotate(-90deg);
     }
 
     .problema-quote {
@@ -1342,22 +1389,53 @@
 
       <div class="problema-right">
         <div class="sintomas-grid">
+
+          <!-- 1. Dispersão — 4 pontos se expandindo -->
           <div class="sintoma-item">
-            <span class="sintoma-mark"></span>
+            <svg class="sintoma-icon" viewBox="0 0 36 36" fill="none">
+              <circle class="si-dot" cx="18" cy="7"  r="2.5" fill="#09374a"/>
+              <circle class="si-dot" cx="29" cy="18" r="2.5" fill="#09374a"/>
+              <circle class="si-dot" cx="18" cy="29" r="2.5" fill="#09374a"/>
+              <circle class="si-dot" cx="7"  cy="18" r="2.5" fill="#09374a"/>
+              <circle cx="18" cy="18" r="2" fill="#2d6376" opacity="0.4"/>
+            </svg>
             <span class="sintoma-text">Dispersão mental constante</span>
           </div>
+
+          <!-- 2. Sobrecarga — 3 barras pulsando -->
           <div class="sintoma-item">
-            <span class="sintoma-mark"></span>
+            <svg class="sintoma-icon" viewBox="0 0 36 36" fill="none">
+              <rect class="si-bar" x="4" y="9"  width="28" height="3" rx="1.5" fill="#09374a"/>
+              <rect class="si-bar" x="4" y="17" width="22" height="3" rx="1.5" fill="#09374a" opacity="0.7"/>
+              <rect class="si-bar" x="4" y="25" width="16" height="3" rx="1.5" fill="#09374a" opacity="0.4"/>
+            </svg>
             <span class="sintoma-text">Sensação de sobrecarga sem causa clara</span>
           </div>
+
+          <!-- 3. Reativo — linha zigzag se desenhando -->
           <div class="sintoma-item">
-            <span class="sintoma-mark"></span>
+            <svg class="sintoma-icon" viewBox="0 0 36 36" fill="none">
+              <polyline class="si-zigzag"
+                points="4,18 10,9 16,24 22,9 28,18 32,14"
+                stroke="#09374a" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span class="sintoma-text">Decisões mais reativas do que estratégicas</span>
           </div>
+
+          <!-- 4. Desgaste — círculo drenando -->
           <div class="sintoma-item">
-            <span class="sintoma-mark"></span>
+            <svg class="sintoma-icon" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="12" stroke="#09374a" stroke-width="1.5" opacity="0.15"/>
+              <circle class="si-circle-drain"
+                cx="18" cy="18" r="10.5"
+                stroke="#09374a" stroke-width="2"
+                stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="3" fill="#09374a" opacity="0.3"/>
+            </svg>
             <span class="sintoma-text">Desgaste cognitivo ao longo do dia</span>
           </div>
+
         </div>
 
         <blockquote class="problema-quote">
