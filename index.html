@@ -950,6 +950,139 @@
       background: var(--light);
       animation: scrollDot 2s ease-in-out infinite;
     }
+    /* ═══════════════════════════════════════════════════
+       RESPONSIVIDADE
+       ═══════════════════════════════════════════════════ */
+
+    /* ── Tablet: 1024px ── */
+    @media (max-width: 1024px) {
+      .nav-links { gap: 24px; }
+      .nav-links a { font-size: 10px; }
+      .btn-nav { padding: 11px 18px; font-size: 10px; }
+
+      .problema-inner  { gap: 56px; }
+      .o-que-e-inner   { gap: 64px; }
+      .modulos-inner,
+      .para-quem-inner,
+      .ecossistema-inner { padding: 0 32px; }
+    }
+
+    /* ── Mobile: 768px ── */
+    @media (max-width: 768px) {
+
+      /* NAV */
+      .nav-inner { padding: 0 24px; gap: 0; }
+      .nav-links  { display: none; }
+      .btn-nav    {
+        font-size: 9px;
+        padding: 10px 16px;
+        letter-spacing: 0.06em;
+      }
+      .nav-reset  { font-size: 14px; }
+      .nav-logo-svg { height: 14px; }
+
+      /* HERO */
+      #hero { padding-top: 72px; }
+      .hero-content { padding: 0 24px; }
+      .hero-logo { margin-bottom: 36px; }
+      .hero-title { margin-bottom: 24px; letter-spacing: 0.08em; }
+      .hero-desc  { font-size: 15px; }
+      .btn-primary { padding: 16px 36px; font-size: 11px; }
+
+      /* O PROBLEMA */
+      #problema { padding: 96px 0; }
+      .problema-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        padding: 0 24px;
+      }
+      .problema-cta { margin-top: 48px; }
+
+      /* O QUE É */
+      #o-que-e { padding: 96px 0; }
+      .o-que-e-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 0 24px;
+      }
+      .o-que-e-left { position: static; }
+      .o-que-e-title { font-size: 20px; }
+
+      /* COMO FUNCIONA */
+      #sistema { padding: 96px 0; }
+      .sistema-inner { padding: 0 24px; }
+      .sistema-flow { gap: 0; }
+      .flow-circle { width: 52px; height: 52px; }
+      .flow-letter  { font-size: 18px; }
+      .flow-label   { font-size: 10px; letter-spacing: 0.06em; }
+      .sistema-flow::before {
+        left: calc(12.5% + 26px);
+        right: calc(12.5% + 26px);
+        top: 26px;
+      }
+
+      /* MAPA DO SISTEMA */
+      #modulos { padding: 96px 0; }
+      .modulos-inner { padding: 0 24px; }
+      .modulos-title { margin-bottom: 48px; }
+      .modulo-card {
+        grid-template-columns: 48px 1fr;
+        grid-template-rows: auto auto;
+        gap: 12px 20px;
+        padding: 28px 20px;
+      }
+      .modulo-nome { grid-column: 2; }
+      .modulo-desc {
+        grid-column: 1 / -1;
+        padding-left: 68px;
+        font-size: 14px;
+      }
+      .modulo-ghost { font-size: 100px; }
+      .modulo-letra { font-size: 22px; }
+      .modulos-cta  { margin-top: 48px; }
+
+      /* PARA QUEM */
+      #para-quem { padding: 96px 0; }
+      .para-quem-inner { padding: 0 24px; }
+      .para-quem-grid  { grid-template-columns: 1fr; }
+      .para-quem-col,
+      .para-quem-col-dark { padding: 40px 32px; }
+
+      /* PROVA SOCIAL */
+      #prova { padding: 96px 0; }
+      .prova-inner { padding: 0 24px; }
+      .prova-box { padding: 36px 32px; }
+
+      /* ECOSSISTEMA */
+      #ecossistema { padding: 96px 0; }
+      .ecossistema-inner { padding: 0 24px; }
+      .eco-grid    { grid-template-columns: 1fr; }
+      .eco-card    { padding: 40px 32px; }
+
+      /* CTA FINAL */
+      #cta { padding: 112px 0; }
+      .cta-inner { padding: 0 24px; }
+
+      /* FOOTER */
+      #footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 36px 24px;
+      }
+    }
+
+    /* ── Mobile pequeno: 480px ── */
+    @media (max-width: 480px) {
+      .nav-reset { display: none; }
+      .nav-sep   { display: none; }
+      .hero-title { letter-spacing: 0.06em; }
+      .btn-nav { display: none; }
+      .modulo-card { grid-template-columns: 1fr; }
+      .modulo-letra { display: none; }
+      .modulo-desc  { padding-left: 0; grid-column: 1; }
+    }
+
   </style>
 </head>
 <body>
