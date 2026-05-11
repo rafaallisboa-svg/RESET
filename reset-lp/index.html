@@ -635,15 +635,6 @@
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 48px;
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .modulos-left {
-      position: sticky;
-      top: 120px;
     }
 
     .modulos-label { color: rgba(255,255,255,0.35); margin-bottom: 24px; }
@@ -653,6 +644,7 @@
       font-weight: 600;
       font-size: clamp(28px, 3.5vw, 44px);
       color: var(--white);
+      margin-bottom: 72px;
       line-height: 1.2;
     }
 
@@ -660,31 +652,22 @@
     .modulos-list {
       display: flex;
       flex-direction: column;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .modulo-card {
-      position: sticky;
-      top: 120px;
+      position: relative;
       display: grid;
       grid-template-columns: 72px 1fr 2fr;
       align-items: center;
       gap: 40px;
       padding: 36px 32px;
-      background: var(--deepest);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
       transition: background 0.25s ease;
       cursor: default;
     }
     .modulo-card:hover { background: var(--dark); }
-
-    /* Z-index crescente — cada card cobre o anterior */
-    .modulo-card:nth-child(1) { z-index: 1; }
-    .modulo-card:nth-child(2) { z-index: 2; }
-    .modulo-card:nth-child(3) { z-index: 3; }
-    .modulo-card:nth-child(4) { z-index: 4; }
-    .modulo-card:nth-child(5) { z-index: 5; }
 
     /* Letra inicial */
     .modulo-letra {
@@ -1198,16 +1181,9 @@
 
       /* MAPA DO SISTEMA */
       #modulos { padding: 96px 0; }
-      .modulos-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        padding: 0 24px;
-      }
-      .modulos-left { position: static; }
-      .modulos-title { margin-bottom: 0; }
+      .modulos-inner { padding: 0 24px; }
+      .modulos-title { margin-bottom: 48px; }
       .modulo-card {
-        position: static;
-        box-shadow: none;
         grid-template-columns: 48px 1fr;
         grid-template-rows: auto auto;
         gap: 12px 20px;
@@ -1541,14 +1517,10 @@
   <section id="modulos">
     <div class="modulos-inner">
 
-      <div class="modulos-left">
-        <span class="section-label modulos-label">O Sistema</span>
-        <h2 class="modulos-title">Cinco alavancas da decisão</h2>
-      </div>
+      <span class="section-label modulos-label">O Sistema</span>
+      <h2 class="modulos-title">Cinco alavancas da decisão</h2>
 
-      <div class="modulos-right">
-
-        <div class="modulos-list">
+      <div class="modulos-list">
 
           <div class="modulo-card">
             <span class="modulo-letra">R</span>
@@ -1582,10 +1554,8 @@
 
         </div>
 
-        <div class="modulos-cta">
-          <a href="#cta" class="btn-primary">Acessar o Protocolo RESET</a>
-        </div>
-
+      <div class="modulos-cta">
+        <a href="#cta" class="btn-primary">Acessar o Protocolo RESET</a>
       </div>
 
     </div>
