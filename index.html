@@ -551,65 +551,12 @@
       margin-bottom: 80px;
     }
 
-    /* Fluxo */
-    .sistema-flow {
+    /* Loop circular */
+    .loop-svg {
       width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      position: relative;
+      max-width: 420px;
+      height: auto;
       margin-bottom: 72px;
-    }
-
-    /* Linha conectora atrás dos nós */
-    .sistema-flow::before {
-      content: '';
-      position: absolute;
-      top: 32px;
-      left: calc(12.5% + 32px);
-      right: calc(12.5% + 32px);
-      height: 1px;
-      background: #C8C8C8;
-      z-index: 0;
-    }
-
-    .flow-node {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .flow-circle {
-      width: 64px;
-      height: 64px;
-      border: 1px solid var(--dark);
-      background: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .flow-letter {
-      font-family: var(--font-dm);
-      font-weight: 500;
-      font-size: 22px;
-      color: var(--deepest);
-      line-height: 1;
-    }
-
-    .flow-label {
-      font-family: var(--font-dm);
-      font-weight: 400;
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--mid);
     }
 
     /* Nota de rodapé */
@@ -748,7 +695,7 @@
     }
 
     .col-tag-is  { color: var(--mid); }
-    .col-tag-not { color: rgba(2,37,54,0.35); }
+    .col-tag-not { color: rgba(2,37,54,0.55); }
 
     .col-items {
       display: flex;
@@ -770,17 +717,18 @@
     }
 
     .col-mark-is  { background: var(--dark); }
-    .col-mark-not { background: #BBBBBB; }
+    .col-mark-not { background: #999; }
 
     .col-item-text {
       font-family: var(--font-dm);
       font-weight: 400;
       font-size: 15px;
       line-height: 1.6;
+      text-wrap: balance;
     }
 
-    .col-item-text-is  { color: var(--deepest); }
-    .col-item-text-not { color: #999; }
+    .col-item-text-is  { color: var(--deepest); font-weight: 500; }
+    .col-item-text-not { color: #666; font-weight: 500; }
 
     /* ─── PROVA SOCIAL ───────────────────────────────── */
     #prova {
@@ -810,13 +758,43 @@
       margin-bottom: 36px;
     }
 
+    .prova-autor {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .prova-foto {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid rgba(45,99,118,0.2);
+      flex-shrink: 0;
+    }
+
+    .prova-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .prova-meta {
       font-family: var(--font-dm);
       font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--light);
+      color: var(--dark);
+    }
+
+    .prova-insta {
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 0;
     }
 
     /* ─── ECOSSISTEMA ────────────────────────────────── */
@@ -1178,15 +1156,7 @@
       /* COMO FUNCIONA */
       #sistema { padding: 96px 0; }
       .sistema-inner { padding: 0 24px; }
-      .sistema-flow { gap: 0; }
-      .flow-circle { width: 52px; height: 52px; }
-      .flow-letter  { font-size: 18px; }
-      .flow-label   { font-size: 10px; letter-spacing: 0.06em; }
-      .sistema-flow::before {
-        left: calc(12.5% + 26px);
-        right: calc(12.5% + 26px);
-        top: 26px;
-      }
+      .loop-svg { max-width: 300px; }
 
       /* MAPA DO SISTEMA */
       #modulos { padding: 96px 0; }
@@ -1502,24 +1472,56 @@
 
       <h2 class="sistema-title">Não linear. Aplicado como ajuste contínuo.</h2>
 
-      <div class="sistema-flow">
-        <div class="flow-node">
-          <div class="flow-circle"><span class="flow-letter">I</span></div>
-          <span class="flow-label">Identificar</span>
-        </div>
-        <div class="flow-node">
-          <div class="flow-circle"><span class="flow-letter">A</span></div>
-          <span class="flow-label">Aplicar</span>
-        </div>
-        <div class="flow-node">
-          <div class="flow-circle"><span class="flow-letter">R</span></div>
-          <span class="flow-label">Reorganizar</span>
-        </div>
-        <div class="flow-node">
-          <div class="flow-circle"><span class="flow-letter">E</span></div>
-          <span class="flow-label">Executar</span>
-        </div>
-      </div>
+      <!-- Círculo contínuo -->
+      <svg class="loop-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <marker id="loop-arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2d6376" opacity="0.7"/>
+          </marker>
+        </defs>
+
+        <!-- Anel de fundo -->
+        <circle cx="250" cy="250" r="150" stroke="#09374a" stroke-width="1" stroke-opacity="0.25"/>
+
+        <!-- Seta indicadora girando continuamente -->
+        <g>
+          <path d="M 356,144 A 150,150 0 0,1 373,164"
+                stroke="#2d6376" stroke-width="2" stroke-opacity="0.7"
+                marker-end="url(#loop-arr)"/>
+          <animateTransform attributeName="transform" type="rotate"
+            from="0 250 250" to="360 250 250"
+            dur="14s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- Nós (círculos brancos cobrem o anel atrás deles) -->
+        <!-- TOPO — Identificar -->
+        <circle cx="250" cy="100" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
+        <text x="250" y="100" text-anchor="middle" dominant-baseline="central"
+              font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">I</text>
+        <text x="250" y="50" text-anchor="middle"
+              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">IDENTIFICAR</text>
+
+        <!-- DIREITA — Aplicar -->
+        <circle cx="400" cy="250" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
+        <text x="400" y="250" text-anchor="middle" dominant-baseline="central"
+              font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">A</text>
+        <text x="450" y="254" text-anchor="start"
+              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">APLICAR</text>
+
+        <!-- BAIXO — Reorganizar -->
+        <circle cx="250" cy="400" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
+        <text x="250" y="400" text-anchor="middle" dominant-baseline="central"
+              font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">R</text>
+        <text x="250" y="455" text-anchor="middle"
+              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">REORGANIZAR</text>
+
+        <!-- ESQUERDA — Executar -->
+        <circle cx="100" cy="250" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
+        <text x="100" y="250" text-anchor="middle" dominant-baseline="central"
+              font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">E</text>
+        <text x="50" y="254" text-anchor="end"
+              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">EXECUTAR</text>
+      </svg>
 
       <p class="sistema-nota">
         O RESET não é consumido como conteúdo.<br>
@@ -1644,7 +1646,13 @@
           uma rotina de foco. O ponto de virada foi entender que o problema
           não era esforço, mas organização da forma de decidir."
         </p>
-        <span class="prova-meta">— Participante do Protocolo RESET</span>
+        <div class="prova-autor">
+          <img class="prova-foto" src="denisePOnte.png" alt="Denise Ponte">
+          <div class="prova-info">
+            <span class="prova-meta">Denise Ponte</span>
+            <span class="prova-insta">@deniseponte.luxo</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1740,7 +1748,7 @@
     ];
 
     const staggerSelectors = [
-      '.sintoma-item', '.pilar', '.flow-node',
+      '.sintoma-item', '.pilar',
       '.modulo-card', '.eco-card',
     ];
 
