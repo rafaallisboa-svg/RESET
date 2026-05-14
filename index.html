@@ -166,9 +166,9 @@
     /* ─── UTILITÁRIOS DE SEÇÃO ──────────────────────── */
     .section-label {
       font-family: var(--font-dm);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.22em;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 28px;
       display: block;
@@ -599,22 +599,31 @@
     .modulos-list {
       display: flex;
       flex-direction: column;
-      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     .modulo-card {
-      position: relative;
+      position: sticky;
+      top: 120px;
       display: grid;
       grid-template-columns: 72px 1fr 2fr;
       align-items: center;
       gap: 40px;
       padding: 36px 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
+      background: var(--deepest);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 -16px 48px rgba(0,0,0,0.6);
       transition: background 0.25s ease;
       cursor: default;
     }
     .modulo-card:hover { background: var(--dark); }
+
+    /* cada card cobre o anterior */
+    .modulo-card:nth-child(1) { z-index: 1; }
+    .modulo-card:nth-child(2) { z-index: 2; }
+    .modulo-card:nth-child(3) { z-index: 3; }
+    .modulo-card:nth-child(4) { z-index: 4; }
+    .modulo-card:nth-child(5) { z-index: 5; }
 
     /* Letra inicial */
     .modulo-letra {
@@ -686,9 +695,9 @@
 
     .col-tag {
       font-family: var(--font-dm);
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 0.22em;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 36px;
       display: block;
@@ -795,7 +804,10 @@
       font-size: 12px;
       color: var(--mid);
       letter-spacing: 0;
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
+    .prova-insta:hover { color: var(--dark); }
 
     /* ─── ECOSSISTEMA ────────────────────────────────── */
     #ecossistema {
@@ -839,8 +851,8 @@
 
     .eco-tag {
       font-family: var(--font-dm);
-      font-weight: 500;
-      font-size: 10px;
+      font-weight: 600;
+      font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
@@ -887,11 +899,11 @@
 
     .cta-label {
       font-family: var(--font-dm);
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 0.24em;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.4);
       margin-bottom: 32px;
     }
 
@@ -1163,6 +1175,8 @@
       .modulos-inner { padding: 0 24px; }
       .modulos-title { margin-bottom: 48px; }
       .modulo-card {
+        position: static;
+        box-shadow: none;
         grid-template-columns: 48px 1fr;
         grid-template-rows: auto auto;
         gap: 12px 20px;
@@ -1414,9 +1428,6 @@
         </blockquote>
       </div>
 
-        <div class="problema-cta">
-          <a href="#cta" class="btn-primary">Acessar o Protocolo RESET</a>
-        </div>
 
     </div>
   </section>
@@ -1499,28 +1510,28 @@
         <text x="250" y="100" text-anchor="middle" dominant-baseline="central"
               font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">I</text>
         <text x="250" y="50" text-anchor="middle"
-              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">IDENTIFICAR</text>
+              font-family="DM Sans,sans-serif" font-size="14" font-weight="500" letter-spacing="1.5" fill="#2d6376">IDENTIFICAR</text>
 
         <!-- DIREITA — Aplicar -->
         <circle cx="400" cy="250" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
         <text x="400" y="250" text-anchor="middle" dominant-baseline="central"
               font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">A</text>
         <text x="450" y="254" text-anchor="start"
-              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">APLICAR</text>
+              font-family="DM Sans,sans-serif" font-size="14" font-weight="500" letter-spacing="1.5" fill="#2d6376">APLICAR</text>
 
         <!-- BAIXO — Reorganizar -->
         <circle cx="250" cy="400" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
         <text x="250" y="400" text-anchor="middle" dominant-baseline="central"
               font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">R</text>
         <text x="250" y="455" text-anchor="middle"
-              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">REORGANIZAR</text>
+              font-family="DM Sans,sans-serif" font-size="14" font-weight="500" letter-spacing="1.5" fill="#2d6376">REORGANIZAR</text>
 
         <!-- ESQUERDA — Executar -->
         <circle cx="100" cy="250" r="32" fill="white" stroke="#09374a" stroke-width="1"/>
         <text x="100" y="250" text-anchor="middle" dominant-baseline="central"
               font-family="DM Sans,sans-serif" font-size="18" font-weight="500" fill="#09374a">E</text>
         <text x="50" y="254" text-anchor="end"
-              font-family="DM Sans,sans-serif" font-size="10" letter-spacing="2" fill="#2d6376">EXECUTAR</text>
+              font-family="DM Sans,sans-serif" font-size="14" font-weight="500" letter-spacing="1.5" fill="#2d6376">EXECUTAR</text>
       </svg>
 
       <p class="sistema-nota">
@@ -1650,7 +1661,7 @@
           <img class="prova-foto" src="denisePOnte.png" alt="Denise Ponte">
           <div class="prova-info">
             <span class="prova-meta">Denise Ponte</span>
-            <span class="prova-insta">@deniseponte.luxo</span>
+            <a class="prova-insta" href="https://www.instagram.com/deniseponte.luxo/" target="_blank" rel="noopener">@deniseponte.luxo</a>
           </div>
         </div>
       </div>
