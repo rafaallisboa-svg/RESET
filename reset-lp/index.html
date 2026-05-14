@@ -833,22 +833,31 @@
 
     .ecossistema-label { color: var(--mid); margin-bottom: 56px; }
 
-    .eco-grid {
+    .eco-card {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: #E0E0E0;
+      gap: 64px;
+      align-items: center;
+      padding: 72px 64px;
+      background: var(--white);
+      border: 1px solid #E8E8E8;
     }
 
-    .eco-card {
-      padding: 56px 52px;
+    .eco-card-body {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
+    .eco-card-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      border-left: 1px solid #E8E8E8;
+      padding-left: 64px;
+    }
+
     .eco-card-light { background: var(--white); }
-    .eco-card-dark  { background: var(--deepest); }
 
     .eco-tag {
       font-family: var(--font-dm);
@@ -1213,8 +1222,17 @@
       /* ECOSSISTEMA */
       #ecossistema { padding: 96px 0; }
       .ecossistema-inner { padding: 0 24px; }
-      .eco-grid    { grid-template-columns: 1fr; }
-      .eco-card    { padding: 40px 32px; }
+      .eco-card {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 32px;
+      }
+      .eco-card-aside {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #E8E8E8;
+        padding-top: 32px;
+      }
 
       /* CTA FINAL */
       #cta { padding: 112px 0; }
@@ -1328,7 +1346,7 @@
 
       <h1 class="hero-title fade-up d2">RESET</h1>
 
-      <p class="hero-subtitle fade-up d3">Arquitetura da Decisão Sob Pressão</p>
+      <p class="hero-subtitle fade-up d3">Uma nova forma de decidir.</p>
 
       <p class="hero-desc fade-up d4">
         Sistema de reorganização cognitiva para líderes<br>
@@ -1639,25 +1657,31 @@
 
       <span class="section-label ecossistema-label">O Ecossistema</span>
 
-      <div class="eco-grid">
+      <div class="eco-card eco-card-light">
 
-        <div class="eco-card eco-card-light">
+        <div class="eco-card-body">
           <span class="eco-tag eco-tag-light">Protocolo RESET</span>
           <h3 class="eco-titulo eco-titulo-light">6 Módulos Estruturados</h3>
           <p class="eco-texto eco-texto-light">
             Acesso completo ao sistema. Aplicação prática e objetiva,
             sem excesso teórico. Encontros bimestrais de dúvidas e refinamento.
           </p>
-          <a href="#cta" class="btn-primary" style="align-self:flex-start;margin-top:16px;">Acessar o Protocolo RESET</a>
+          <a href="#cta" class="btn-primary" style="align-self:flex-start;margin-top:8px;">Acessar o Protocolo RESET</a>
         </div>
 
-        <div class="eco-card eco-card-dark">
-          <span class="eco-tag eco-tag-dark">Diagnóstico Individual</span>
-          <h3 class="eco-titulo eco-titulo-dark">Reestruturação Personalizada</h3>
-          <p class="eco-texto eco-texto-dark">
-            Uma reunião pontual aplicada diretamente no seu contexto.
-            Identificação de interferências específicas e direcionamento imediato.
-          </p>
+        <div class="eco-card-aside">
+          <div>
+            <span class="eco-tag eco-tag-light" style="margin-bottom:10px;display:block;">Formato</span>
+            <p class="eco-texto eco-texto-light">Autoaplicável. Sem encontros obrigatórios.</p>
+          </div>
+          <div>
+            <span class="eco-tag eco-tag-light" style="margin-bottom:10px;display:block;">Acesso</span>
+            <p class="eco-texto eco-texto-light">Imediato após inscrição.</p>
+          </div>
+          <div>
+            <span class="eco-tag eco-tag-light" style="margin-bottom:10px;display:block;">Suporte</span>
+            <p class="eco-texto eco-texto-light">Encontros bimestrais de dúvidas e refinamento.</p>
+          </div>
         </div>
 
       </div>
@@ -1717,7 +1741,7 @@
 
     const staggerSelectors = [
       '.sintoma-item', '.pilar', '.flow-node',
-      '.modulo-card', '.eco-card', '.eco-card-dark',
+      '.modulo-card', '.eco-card',
     ];
 
     // Aplica classe reveal
