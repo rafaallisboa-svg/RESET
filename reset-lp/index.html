@@ -1739,11 +1739,15 @@
   </footer>
 
   <script>
-    // ── Back to top
+    // ── Back to top: aparece ao scrollar pra cima, some ao scrollar pra baixo
     const btn = document.getElementById('back-top');
+    let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 400);
-    });
+      const currentY = window.scrollY;
+      const scrollingUp = currentY < lastScrollY;
+      btn.classList.toggle('visible', scrollingUp && currentY > 400);
+      lastScrollY = currentY;
+    }, { passive: true });
 
     // ── Scroll Reveal + Stagger
     const revealSelectors = [
