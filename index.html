@@ -1115,6 +1115,12 @@
       .ecossistema-inner { padding: 0 32px; }
     }
 
+    /* ── Ocultar cursor em touch/mobile ── */
+    @media (hover: none) {
+      * { cursor: auto !important; }
+      #cursor-dot, #cursor-ring, #cursor-glow { display: none !important; }
+    }
+
     /* ── Mobile: 768px ── */
     @media (max-width: 768px) {
 
@@ -1138,77 +1144,75 @@
       .btn-primary { padding: 16px 36px; font-size: 11px; }
 
       /* O PROBLEMA */
-      #problema { padding: 96px 0; }
+      #problema { padding: 72px 0; }
       .problema-inner {
         grid-template-columns: 1fr;
-        gap: 56px;
+        gap: 48px;
         padding: 0 24px;
       }
-      .problema-cta { margin-top: 48px; }
 
       /* O QUE É */
-      #o-que-e { padding: 96px 0; }
+      #o-que-e { padding: 72px 0; }
       .o-que-e-inner {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 40px;
         padding: 0 24px;
       }
       .o-que-e-left { position: static; }
       .o-que-e-title { font-size: 20px; }
 
       /* COMO FUNCIONA */
-      #sistema { padding: 96px 0; }
+      #sistema { padding: 72px 0; }
       .sistema-inner { padding: 0 24px; }
-      .loop-svg { max-width: 300px; }
+      .loop-svg { max-width: 280px; }
 
       /* MAPA DO SISTEMA */
-      #modulos { padding: 96px 0; }
+      #modulos { padding: 72px 0; }
       .modulos-inner { padding: 0 24px; }
-      .modulos-title { margin-bottom: 48px; }
+      .modulos-title { margin-bottom: 40px; }
       .modulo-card {
-        grid-template-columns: 48px 1fr;
-        grid-template-rows: auto auto;
-        gap: 12px 20px;
-        padding: 28px 20px;
+        grid-template-columns: 40px 1fr;
+        gap: 10px 16px;
+        padding: 24px 20px;
       }
-      .modulo-nome { grid-column: 2; }
-      .modulo-desc {
+      .modulo-letra { font-size: 20px; }
+      .modulo-nome  { grid-column: 2; }
+      .modulo-desc  {
         grid-column: 1 / -1;
-        padding-left: 68px;
+        padding-left: 56px;
         font-size: 14px;
       }
-      .modulo-letra { font-size: 22px; }
-      .modulos-cta  { margin-top: 48px; }
+      .modulos-cta { margin-top: 40px; }
 
       /* PARA QUEM */
-      #para-quem { padding: 96px 0; }
+      #para-quem { padding: 72px 0; }
       .para-quem-inner { padding: 0 24px; }
       .para-quem-grid  { grid-template-columns: 1fr; }
       .para-quem-col,
-      .para-quem-col-dark { padding: 40px 32px; }
+      .para-quem-col-dark { padding: 36px 28px; }
 
       /* PROVA SOCIAL */
-      #prova { padding: 96px 0; }
+      #prova { padding: 72px 0; }
       .prova-inner { padding: 0 24px; }
-      .prova-box { padding: 36px 32px; }
+      .prova-box { padding: 32px 28px; }
 
       /* ECOSSISTEMA */
-      #ecossistema { padding: 96px 0; }
+      #ecossistema { padding: 72px 0; }
       .ecossistema-inner { padding: 0 24px; }
       .eco-card {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 40px 32px;
+        gap: 36px;
+        padding: 36px 28px;
       }
       .eco-card-aside {
         border-left: none;
         padding-left: 0;
         border-top: 1px solid #E8E8E8;
-        padding-top: 32px;
+        padding-top: 28px;
       }
 
       /* CTA FINAL */
-      #cta { padding: 112px 0; }
+      #cta { padding: 80px 0; }
       .cta-inner { padding: 0 24px; }
 
       /* FOOTER */
@@ -1216,7 +1220,7 @@
         flex-direction: column;
         gap: 20px;
         text-align: center;
-        padding: 36px 24px;
+        padding: 32px 24px;
       }
     }
 
@@ -1226,9 +1230,14 @@
       .nav-sep   { display: none; }
       .hero-title { letter-spacing: 0.06em; }
       .btn-nav { display: none; }
-      .modulo-card { grid-template-columns: 1fr; }
+      /* Cards: coluna única, tudo alinhado à esquerda */
+      .modulo-card {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
       .modulo-letra { display: none; }
-      .modulo-desc  { padding-left: 0; grid-column: 1; }
+      .modulo-nome  { grid-column: 1; }
+      .modulo-desc  { grid-column: 1; padding-left: 0; font-size: 14px; }
     }
 
   </style>
