@@ -1116,7 +1116,7 @@
     }
 
     /* ── Ocultar cursor em touch/mobile ── */
-    @media (hover: none) {
+    @media (hover: none), (max-width: 768px) {
       * { cursor: auto !important; }
       #cursor-dot, #cursor-ring, #cursor-glow { display: none !important; }
     }
@@ -1797,10 +1797,16 @@
       }
     }, { passive: true });
 
-    // ── Cursor customizado
+    // ── Cursor customizado (apenas em desktop com mouse)
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const dot   = document.getElementById('cursor-dot');
     const ring  = document.getElementById('cursor-ring');
     const glow  = document.getElementById('cursor-glow');
+    if (isTouchDevice) {
+      dot.style.display = 'none';
+      ring.style.display = 'none';
+      glow.style.display = 'none';
+    }
 
     let ringX = 0, ringY = 0;
     let mouseX = 0, mouseY = 0;
