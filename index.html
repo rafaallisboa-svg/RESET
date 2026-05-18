@@ -801,13 +801,23 @@
     .prova-insta:hover { color: var(--dark); }
 
     /* ─── CARROSSEL ──────────────────────────────────── */
-    .carrossel-slide { display: none; }
+    /* Grid overlay: todos os slides empilhados — altura = slide mais alto */
+    .carrossel {
+      display: grid;
+    }
+    .carrossel-slide {
+      grid-area: 1 / 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
     .carrossel-slide.active {
-      display: block;
+      opacity: 1;
+      pointer-events: auto;
       animation: carFadeIn 0.55s cubic-bezier(0.22,1,0.36,1);
     }
     @keyframes carFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+      from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
